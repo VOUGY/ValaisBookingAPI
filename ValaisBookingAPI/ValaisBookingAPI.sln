@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2041
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValaisBookingAPI", "ValaisBookingAPI\ValaisBookingAPI.csproj", "{DD5933D2-4F99-4E31-870F-993572AD37F6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DD5933D2-4F99-4E31-870F-993572AD37F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD5933D2-4F99-4E31-870F-993572AD37F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD5933D2-4F99-4E31-870F-993572AD37F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD5933D2-4F99-4E31-870F-993572AD37F6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CDE693D3-6028-423A-8C92-5475CC402012}
+	EndGlobalSection
+EndGlobal
