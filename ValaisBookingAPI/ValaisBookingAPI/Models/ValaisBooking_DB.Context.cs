@@ -10,9 +10,10 @@
 namespace ValaisBookingAPI.Models
 {
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+
     public partial class ValaisBookingEntities : DbContext
     {
         public ValaisBookingEntities()
@@ -24,7 +25,8 @@ namespace ValaisBookingAPI.Models
         {
             throw new UnintentionalCodeFirstException();
         }
-    
+
+      
         public virtual DbSet<Client> Clients { get; set; }
         public virtual DbSet<Hotel> Hotels { get; set; }
         public virtual DbSet<Picture> Pictures { get; set; }
