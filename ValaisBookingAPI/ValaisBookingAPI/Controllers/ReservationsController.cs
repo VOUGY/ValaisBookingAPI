@@ -38,6 +38,8 @@ namespace ValaisBookingAPI.Controllers
                 return BadRequest(ModelState);
             }
 
+            reservation.Rooms.Add(db.Rooms.Find(2));
+
             db.Reservations.Add(reservation);
             await db.SaveChangesAsync();
 
@@ -51,14 +53,31 @@ namespace ValaisBookingAPI.Controllers
             return db.Reservations.Where(re => re.IdReservation == idReservation).SelectMany(re=>db.Rooms);
         }
 
-        /*
-        // POST: api/reservations/{idReservation}/rooms/{idRoom}
+        
+        // POST: api/reservations/{idReservation}/rooms/
         [Route("api/reservations/{idReservation}/rooms")]
-        public IQueryable<Room> PostRoomsReservations(int idReservation, )
+        [ResponseType(typeof(Reservation))]
+        public IHttpActionResult PostRoomsReservations(int idReservation, int[] roomIds)
         {
-            return db.Reservations.Where(re => re.IdReservation == idReservation).SelectMany(re => db.Rooms);
+            ICollection<Room> rooms = new List<Room>();
+            Reservation reservation = db.Reservations.Find(idReservation);
+            if (reservation == null)
+            {
+                return NotFound();
+            }
+
+            foreach (int roomId in roomIds)
+            {
+                Room room = db.Rooms.Find(roomId);
+                rooms.Add(room);
+                db.Rooms.Attach(room);
+            }
+            reservation.Rooms = rooms;
+
+            db.SaveChanges();
+
+            return Ok(reservation);
         }
-        */
 
         // DELETE: api/Reservations/5
         [ResponseType(typeof(Reservation))]
