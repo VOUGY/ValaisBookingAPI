@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ValaisBookingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ValaisBookingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Client">
           <Key>
             <PropertyRef Name="IdClient" />
@@ -58,8 +58,6 @@
           <Property Name="HasHairDryer" Type="bit" Nullable="false" />
           <Property Name="IdHotel" Type="int" Nullable="false" />
         </EntityType>
-        <!--Erreurs détectées durant la génération :
-avertissement 6002: La table/vue 'C:\VALAISBOOKINGAPI\VALAISBOOKINGAPI\VALAISBOOKINGAPI\APP_DATA\VALAISBOOKING.MDF.dbo.RoomReservation' n'a pas de clé primaire définie. La clé a été déduite et la définition a été créée en tant que table/vue en lecture seule.-->
         <EntityType Name="RoomReservation">
           <Key>
             <PropertyRef Name="IdRoom" />
@@ -134,12 +132,7 @@ avertissement 6002: La table/vue 'C:\VALAISBOOKINGAPI\VALAISBOOKINGAPI\VALAISBOO
           <EntitySet Name="Picture" EntityType="Self.Picture" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Reservation" EntityType="Self.Reservation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Room" EntityType="Self.Room" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="RoomReservation" EntityType="Self.RoomReservation" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [RoomReservation].[IdRoom] AS [IdRoom], 
-    [RoomReservation].[IdReservation] AS [IdReservation]
-    FROM [dbo].[RoomReservation] AS [RoomReservation]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="RoomReservation" EntityType="Self.RoomReservation" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Picture_Room" Association="Self.FK_Picture_Room">
             <End Role="Room" EntitySet="Room" />
             <End Role="Picture" EntitySet="Picture" />
@@ -161,8 +154,7 @@ avertissement 6002: La table/vue 'C:\VALAISBOOKINGAPI\VALAISBOOKINGAPI\VALAISBOO
             <End Role="RoomReservation" EntitySet="RoomReservation" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ValaisBookingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -264,8 +256,8 @@ avertissement 6002: La table/vue 'C:\VALAISBOOKINGAPI\VALAISBOOKINGAPI\VALAISBOO
           </ReferentialConstraint>
         </Association>
         <Association Name="RoomReservation">
-          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
-          <End Role="Room" Type="Self.Room" Multiplicity="*" />
+          <End Type="Self.Reservation" Multiplicity="*" Role="Reservation" />
+          <End Type="Self.Room" Multiplicity="*" Role="Room" />
         </Association>
         <EntityContainer Name="ValaisBookingEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Clients" EntityType="Self.Client" />
@@ -286,8 +278,8 @@ avertissement 6002: La table/vue 'C:\VALAISBOOKINGAPI\VALAISBOOKINGAPI\VALAISBOO
             <End Role="Picture" EntitySet="Pictures" />
           </AssociationSet>
           <AssociationSet Name="RoomReservation" Association="Self.RoomReservation">
-            <End Role="Reservation" EntitySet="Reservations" />
-            <End Role="Room" EntitySet="Rooms" />
+            <End EntitySet="Reservations" Role="Reservation" />
+            <End EntitySet="Rooms" Role="Room" />
           </AssociationSet>
         </EntityContainer>
       </Schema>

@@ -8,12 +8,12 @@
         <EntityTypeShape EntityType="ValaisBookingModel.Client" Width="1.5" PointX="7.875" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ValaisBookingModel.Hotel" Width="1.5" PointX="3.5" PointY="3.25" IsExpanded="true" />
         <EntityTypeShape EntityType="ValaisBookingModel.Picture" Width="1.5" PointX="5.75" PointY="0.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ValaisBookingModel.Reservation" Width="1.5" PointX="11.125" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ValaisBookingModel.Reservation" Width="1.5" PointX="10.125" PointY="5.5" IsExpanded="true" />
         <EntityTypeShape EntityType="ValaisBookingModel.Room" Width="1.5" PointX="7.875" PointY="1.875" IsExpanded="true" />
         <AssociationConnector Association="ValaisBookingModel.FK_Reservation_Client" ManuallyRouted="false" />
         <AssociationConnector Association="ValaisBookingModel.FK_Room_Hotel" ManuallyRouted="false" />
         <AssociationConnector Association="ValaisBookingModel.FK_Picture_Room" ManuallyRouted="false" />
-        <AssociationConnector Association="ValaisBookingModel.RoomReservation" ManuallyRouted="false" />
+        <AssociationConnector ManuallyRouted="false" Association="ValaisBookingModel.RoomReservation"></AssociationConnector>
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
