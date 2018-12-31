@@ -79,7 +79,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Reservation_Client">
-          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Client">
@@ -103,7 +105,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_RoomReservation_Reservation">
-          <End Role="Reservation" Type="Self.Reservation" Multiplicity="1" />
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="RoomReservation" Type="Self.RoomReservation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Reservation">
@@ -115,7 +119,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_RoomReservation_Room">
-          <End Role="Room" Type="Self.Room" Multiplicity="1" />
+          <End Role="Room" Type="Self.Room" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="RoomReservation" Type="Self.RoomReservation" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Room">
