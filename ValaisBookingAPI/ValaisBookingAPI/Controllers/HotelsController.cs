@@ -35,5 +35,12 @@ namespace ValaisBookingAPI.Controllers
 
             return Ok(hotel);
         }
+
+        // GET: api/Hotels/5/Rooms
+        [Route("api/hotels/{idHotel}/rooms")]
+        public IQueryable<Room> GetRoomsByHotel(int idHotel)
+        {
+            return db.Rooms.Where(r => r.IdHotel == idHotel);
+        }
     }
 }
