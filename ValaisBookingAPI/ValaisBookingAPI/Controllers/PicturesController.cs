@@ -19,13 +19,11 @@ namespace ValaisBookingAPI.Controllers
         private ValaisBookingEntities db = new ValaisBookingEntities();
 
         // GET: api/Hotel/{id}/Pictures
-        [Route("api/Hotels/{id}/Pictures")]
+        [Route("api/hotels/{id}/pictures")]
         [HttpGet]
         public IQueryable<Picture> GetPicturesForHotel(int id)
         {
-            IQueryable<Picture> pictures = db.Rooms.Where(r => r.IdHotel == id).SelectMany(r=>db.Pictures);
-
-            return pictures;
+            return db.Pictures.Where(p => p.Room.IdHotel == id);
         }
 
         // GET: api/rooms/{id}/Pictures
@@ -33,9 +31,7 @@ namespace ValaisBookingAPI.Controllers
         [HttpGet]
         public IQueryable<Picture> GetPicturesForRoom(int id)
         {
-            IQueryable<Picture> pictures = db.Rooms.Where(r => r.IdRoom == id).SelectMany(r => db.Pictures);
-
-            return pictures;
+            return db.Pictures.Where(p => p.IdRoom == id);
         }
 
     }
