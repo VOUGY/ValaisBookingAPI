@@ -17,12 +17,6 @@ namespace ValaisBookingAPI.Controllers
     {
         private ValaisBookingEntities db = new ValaisBookingEntities();
 
-        // GET: api/Clients
-        public IQueryable<Client> GetClients()
-        {
-            return db.Clients;
-        }
-
         // GET: api/Clients/5
         [ResponseType(typeof(Client))]
         public async Task<IHttpActionResult> GetClient(int id)
@@ -35,46 +29,18 @@ namespace ValaisBookingAPI.Controllers
 
             return Ok(client);
         }
-
-        // PUT: api/Clients/5
-        [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutClient(int id, Client client)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != client.IdClient)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(client).State = EntityState.Modified;
-
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ClientExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
-        }
-
+        
         // POST: api/Clients
         [ResponseType(typeof(Client))]
-        public async Task<IHttpActionResult> PostClient(Client client)
+        public async Task<IHttpActionResult> AddClient(String firstname, String lastname)
         {
+            Client client = new Client() {
+                Firstname = firstname,
+                Lastname = lastname             
+                
+            };
+            
+  
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);

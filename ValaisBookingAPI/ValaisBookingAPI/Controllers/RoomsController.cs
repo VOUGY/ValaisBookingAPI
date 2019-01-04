@@ -18,10 +18,11 @@ namespace ValaisBookingAPI.Controllers
         private ValaisBookingEntities db = new ValaisBookingEntities();
 
         // GET: api/Rooms
-        public IQueryable<Room> GetRooms()
-        {
+        public IQueryable<Room> GetRooms(int? withreservation)
+        {          
             return db.Rooms;
-        }
+        } 
+        
 
         // GET: api/Rooms/5
         [ResponseType(typeof(Room))]
