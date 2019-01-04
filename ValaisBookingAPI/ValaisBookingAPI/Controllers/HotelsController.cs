@@ -50,21 +50,6 @@ namespace ValaisBookingAPI.Controllers
         {
           DateTime Darrival = DateTime.Parse(arrival);
           DateTime Ddeparture = DateTime.Parse(departure);
-            //   var query = from Roo in db.Rooms
-            //               join Res in db.Reservations on Roo.IdRoom equals Res.Rooms.Where(r => r.IdRoom = )
-            string sql = "SELECT ro.*, re.* FROM Room ro " +
-                                    "FULL JOIN RoomReservation rr ON ro.IdRoom = rr.IdRoom " +
-                                    "LEFT JOIN Reservation re ON re.IdReservation = rr.IdReservation " +
-                                    " WHERE " +
-                                    "    ro.IdHotel = " + idHotel +
-                                    "    AND(" +
-                                    "        NOT(" +
-                                    "            re.Arrival BETWEEN " + Darrival.ToString("yyyy-MM-dd HH:mm:ss.fff") + " AND " + Ddeparture.ToString("yyyy-MM-dd HH:mm:ss.fff") + " " +
-                                    "            OR re.Departure BETWEEN " + Darrival.ToString("yyyy-MM-dd HH:mm:ss.fff") + " AND " + Ddeparture.ToString("yyyy-MM-dd HH:mm:ss.fff") + " " +
-                                    "            OR(re.Arrival <= " + Darrival.ToString("yyyy-MM-dd HH:mm:ss.fff") + " AND re.Departure >= " + Ddeparture.ToString("yyyy-MM-dd HH:mm:ss.fff") + ") " +
-                                    "        ) " +
-                                    "        OR re.Arrival IS NULL " +
-                                    "     )";
 
             return db.Rooms.SqlQuery("SELECT ro.*, re.* FROM Room ro" +
                                     " FULL JOIN RoomReservation rr ON ro.IdRoom = rr.IdRoom" +
